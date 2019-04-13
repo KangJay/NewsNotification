@@ -1,0 +1,22 @@
+<html>
+    <title>William's Web App</title>
+	<body>
+        <div class="container">
+            <h1>News Dash!</h1>
+            <h3>By Torren Sampson, William Eng, Ji Kang</h3>
+            <p>Our service allows you to receive daily (noon PST) notifications about news related to your interests!</p>
+            <p>Enter your phone number to get started!
+            E.g 2061234567</p>
+            <p>NOTE: We only support US numbers at the moment :(</p>
+            <hr>
+            {% if error %}
+                <h2><strong>Error:</strong> {{ error }}</h2>
+            {% endif %}
+            <form action="" method="post">
+        <p><input type="text" placeholder="Phone" name="phone" value="{{
+          request.form.phone }}">
+        <input class="btn btn-default" name="button" type="submit" value="Continue!"></p>
+            </form>
+        </div>
+   	</body>
+</html>

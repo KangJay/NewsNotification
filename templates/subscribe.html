@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>NewsDash Subscribe Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="container">
+      <h1>News Dash!</h1>
+      <h3>By Torren Sampson, William Eng, Ji Kang</h3>
+      <p>Our service allows you to receive daily notificaitons about news related to your interests!</p>
+      <p>Enter topics and select categories you are interested in!</p>
+      <p>Select at least 1 category and feel free to add your own custom topics.</p>
+      <p>Please clear the window before entering another topic!</p>
+      <p>Once you are satisfied enter your phone number (US-numbers only) and press subscribe!</p>
+      <p>E.g 2061234567</p>
+      <p>NOTE: We only support US numbers at the moment :(</p>
+      <hr>
+      {% if error %}
+        <h2><strong>Error:</strong></h2>
+        <p class="error"> {{ error }}
+      {% endif %}
+      
+      {% if message is defined %}
+        <h2>Message:</h2>
+        <div class="{{ category }}">{{ message }}</div>
+      {% endif %}
+      
+      <h2>Enter your number here!</h2>
+      <form action="" method="post">
+        <p><input type="text" placeholder="Phone" name="phone" value="{{
+          request.form.phone }}">
+        <input class="btn btn-default" name="button" type="submit" value="Subscribe!"></p>
+        
+      	<input type="text" placeholder="Enter some topics you're interested in!" name="topic" value="{{
+          request.form.topic }}">
+        <input class="btn btn-default" name="button" type="submit" value="Add Topic">
+        {% if topics|length > 0 %}
+          <h3>Current Topics:</h3>
+          <ul>
+          {% for topic in topics %}
+            <li>{{ topic }} </li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+        <h2>Categories:</h2>
+        <p>Press a button to select a category</p>
+        <input class="btn btn-default" name="button" type="submit" value="Business">
+        <input class="btn btn-default" name="button" type="submit" value="Entertainment">
+        <input class="btn btn-default" name="button" type="submit" value="General">
+        <input class="btn btn-default" name="button" type="submit" value="Health">
+        <input class="btn btn-default" name="button" type="submit" value="Science">
+        <input class="btn btn-default" name="button" type="submit" value="Sports">
+        <input class="btn btn-default" name="button" type="submit" value="Technology">
+      </form>
+      {% if categories|length > 0 %}
+          <h3>Current Categories:</h3>
+          <ul>
+          {% for category in categories %}
+            <li>{{ category }} </li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+    </div>
+      <a href="https://newsapi.org">Powered by News API</a>
+  </body>
+</html>
+
